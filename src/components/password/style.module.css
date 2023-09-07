@@ -1,0 +1,91 @@
+form {
+  width: 500px;
+  /* height: 500px; */
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 70px;
+  margin: 0 auto;
+}
+.title {
+  color: #222319;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 45px 0 30px;
+}
+.text {
+  font-weight: 300;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.boxinput {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+.boxinput input {
+  width: 75%;
+  border: 1px solid #6c6c6c;
+  border-radius: 12px;
+  padding: 8px;
+  margin-right: 10px;
+}
+.boxinput button {
+  padding: 10px 16px;
+  color: #000;
+  font-weight: 700;
+  border-radius: 15px;
+  border: none;
+  background-color: #00cdcd;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icoin1 {
+  position: absolute;
+  top: 9px;
+  right: 117px;
+}
+.textbutton {
+  margin-left: 5px;
+}
+.length {
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  font-weight: 600;
+  height: 20px;
+  color: green;
+  margin-bottom: 11px;
+}
+.password {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 52px;
+}
+.passwordlength {
+  text-align: left;
+  margin-bottom: 12px;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.setting {
+  width: 100%;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+}
