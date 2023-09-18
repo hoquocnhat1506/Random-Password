@@ -1,7 +1,30 @@
-import style from "./style.module.css"; 
+import { useState } from "react";
+import style from "./style.module.css";
 
 function Password() {
-    const[password]
+  const [password, setPassword] = useState("");
+  const [passwordLength, setPasswordLength] = useState(20);
+  const [useSymbols, setUseSymbols] = useState(true);
+  const [useNumbers, setUseNumbers] = useState(true);
+  const [useLowerCase, setUseLowerCase] = useState(true);
+  const [useUpperCase, setUseUpperCase] = useState(true);
+
+  const generatePassword = () => {
+    let charset = "";
+    let newPassword = "";
+
+    if (useSymbols) charset += "!@#$%^&*()";
+    if (useNumbers) charset += "0123456789";
+    if (useLowerCase) charset += "abcdefghijklmnopqrstuvwxyz";
+    if (useUpperCase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for (let i = 0; i < passwordLength; i++) {
+      newPassword += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+
+    setPassword(newPassword);
+  };
+
   return (
     <form>
       <div className={style.title}>PASSWORD GENERATOR</div>
@@ -9,8 +32,9 @@ function Password() {
         Create strong and secure passwords to keep your account safe online.
       </div>
       <div className={style.boxinput}>
-        <input type="text" />
+        <input type="text" value={password} readOnly />
         <svg
+          onClick={generatePassword}
           className={style.icoin1}
           stroke="currentColor"
           fill="none"
@@ -46,28 +70,65 @@ function Password() {
           <div className={style.textbutton}>Copy</div>
         </button>
       </div>
-      <div className={style.length}>Too short</div>
+      <div className={style.length}>
+        {passwordLength <= 6 ? "Too short" : "Hard"}
+      </div>
       <div className={style.password}>
-        <div className={style.passwordlength}>Password Length:</div>
-        <input type="range" />
+        <div className={style.passwordlength}>
+          Password Length:
+          <span>
+            <input
+              className={style.number}
+              type="number"
+              min="1"
+              max="20"
+              value={passwordLength}
+              onChange={(e) => setPasswordLength(e.target.value)}
+            />
+          </span>
+        </div>
+        <input
+          type="range"
+          min="1"
+          max="20"
+          value={passwordLength}
+          onClick={generatePassword}
+          onChange={(e) => setPasswordLength(e.target.value)}
+        />
       </div>
       <div className={style.setting}>
         <ul>
           <li className={style.choose}>
             <label>Uppercase</label>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={useUpperCase}
+              onChange={() => setUseUpperCase(!useUpperCase)}
+            />
           </li>
           <li className={style.choose}>
             <label>Lowercase</label>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={useLowerCase}
+              onChange={() => setUseLowerCase(!useLowerCase)}
+            />
           </li>
           <li className={style.choose}>
             <label>Numbers</label>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={useNumbers}
+              onChange={() => setUseNumbers(!useNumbers)}
+            />
           </li>
           <li className={style.choose}>
             <label>Special Characters</label>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={useSymbols}
+              onChange={() => setUseSymbols(!useSymbols)}
+            />
           </li>
         </ul>
       </div>
